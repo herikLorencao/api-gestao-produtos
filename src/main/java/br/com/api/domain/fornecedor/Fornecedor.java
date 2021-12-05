@@ -21,7 +21,7 @@ public class Fornecedor {
     }
 
     public void desabilitar() {
-        situacao = Situacao.DESATIVADO;
+        situacao = Situacao.INATIVO;
     }
 
     public Long getCodigo() {

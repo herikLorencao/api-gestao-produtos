@@ -1,11 +1,9 @@
 package br.com.api.domain.produto;
 
-import java.util.List;
-
-public interface ProdutoService {
+public interface ProdutoService<T, V> {
     Produto buscar(Long codigo);
 
-    List<Produto> listarAtivos();
+    T listarAtivos(V dadosPaginacao);
 
     Produto cadastrar(Produto produto);
 

@@ -1,15 +1,13 @@
 package br.com.api.domain.fornecedor;
 
-import java.util.List;
-
-public interface FornecedorService {
+public interface FornecedorService<T, V> {
     Fornecedor buscar(Long id);
 
-    List<Fornecedor> listar();
+    T listar(V dadosPaginacao);
 
-    Fornecedor cadastrar(Fornecedor supplier);
+    Fornecedor cadastrar(Fornecedor fornecedor);
 
-    Fornecedor alterar(Fornecedor supplier);
+    Fornecedor alterar(Fornecedor fornecedor);
 
     void remover(Long id);
 }

@@ -13,6 +13,6 @@ public class FornecedorFactory {
         var validador = new ValidadorCNPJStella();
         var cnpj = new CNPJ(validador, "03.778.130/0001-48");
         var produtos = new ArrayList<Produto>();
-        return new Fornecedor(1L, "Teste", cnpj, produtos, Situacao.ATIVADO);
+        return new Fornecedor(1L, "Teste", cnpj, produtos, Situacao.ATIVO);
     }
 }

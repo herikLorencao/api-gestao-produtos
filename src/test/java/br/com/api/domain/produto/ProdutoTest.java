@@ -28,7 +28,7 @@ class ProdutoTest {
         var data = LocalDate.now();
 
         assertThrows(DatasInvalidas.class, () -> {
-            new Produto(1L, "Vidro", data, data, fornecedor, Situacao.ATIVADO);
+            new Produto(1L, "Vidro", data, data, fornecedor, Situacao.ATIVO);
         });
     }
 
@@ -39,7 +39,7 @@ class ProdutoTest {
         var diaAnterior = LocalDate.now().minus(1L, ChronoUnit.DAYS);
 
         assertThrows(DatasInvalidas.class, () -> {
-            new Produto(1L, "Vidro", data, diaAnterior, fornecedor, Situacao.ATIVADO);
+            new Produto(1L, "Vidro", data, diaAnterior, fornecedor, Situacao.ATIVO);
         });
     }
 
@@ -49,6 +49,6 @@ class ProdutoTest {
 
         produto.desativar();
 
-        assertEquals(Situacao.DESATIVADO, produto.getSituacao());
+        assertEquals(Situacao.INATIVO, produto.getSituacao());
     }
 }

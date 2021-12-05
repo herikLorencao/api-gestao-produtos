@@ -14,7 +14,7 @@ public class ProdutoData {
     @Column(name = "codigo", nullable = false)
     private Long codigo;
 
-    @Column(name = "descricao")
+    @Column(name = "descricao", nullable = false)
     private String descricao;
 
     @Column(name = "data_fabricacao")

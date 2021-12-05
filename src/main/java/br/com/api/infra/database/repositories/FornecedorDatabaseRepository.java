@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FornecedorDatabaseRepository implements FornecedorRepository<Page<Fornecedor>, Pageable> {
 
     private final FornecedorDataRepository repository;
@@ -28,7 +30,7 @@ public class FornecedorDatabaseRepository implements FornecedorRepository<Page<F
         var fornecedorData = repository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(id, Fornecedor.class.getSimpleName()));
 
-        if (fornecedorData.getSituacao().equals(Situacao.DESATIVADO))
+        if (fornecedorData.getSituacao().equals(Situacao.INATIVO))
             throw new ObjectNotFoundException(id, Fornecedor.class.getSimpleName());
 
         return modelMapper.map(fornecedorData, Fornecedor.class);
@@ -36,7 +38,7 @@ public class FornecedorDatabaseRepository implements FornecedorRepository<Page<F
 
     @Override
     public Page<Fornecedor> listar(Pageable dadosPaginacao) {
-        var paginaFornecedorData = repository.findAllBySituacao(Situacao.ATIVADO, dadosPaginacao);
+        var paginaFornecedorData = repository.findAllBySituacao(Situacao.ATIVO, dadosPaginacao);
         var fornecedores = paginaFornecedorData.getContent()
                 .stream().map(fornecedorData -> modelMapper.map(fornecedorData, Fornecedor.class)).toList();
         return new PageImpl<>(fornecedores, dadosPaginacao, paginaFornecedorData.getTotalElements());

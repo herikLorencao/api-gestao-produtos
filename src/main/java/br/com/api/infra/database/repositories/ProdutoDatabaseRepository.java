@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto>, Pageable> {
     private final ProdutoDataRepository repository;
     private final ModelMapper modelMapper;
@@ -27,7 +29,7 @@ public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto
         var produtoData = repository.findById(codigo)
                 .orElseThrow(() -> new ObjectNotFoundException(codigo, Produto.class.getSimpleName()));
 
-        if (produtoData.getSituacao().equals(Situacao.DESATIVADO))
+        if (produtoData.getSituacao().equals(Situacao.INATIVO))
             throw new ObjectNotFoundException(codigo, Produto.class.getSimpleName());
 
         return modelMapper.map(produtoData, Produto.class);

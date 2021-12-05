@@ -13,6 +13,6 @@ public class ProdutoFactory {
         var fornecedor = fornecedorFactory.geraValido();
         var dataFabricacao = LocalDate.now().minus(1L, ChronoUnit.DAYS);
         var dataValidade = LocalDate.now();
-        return new Produto(1L, "Vidro", dataFabricacao, dataValidade, fornecedor, Situacao.ATIVADO);
+        return new Produto(1L, "Vidro", dataFabricacao, dataValidade, fornecedor, Situacao.ATIVO);
     }
 }

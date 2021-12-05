@@ -27,7 +27,7 @@ public class Produto {
     }
 
     public void desativar() {
-        situacao = Situacao.DESATIVADO;
+        situacao = Situacao.INATIVO;
     }
 
     private boolean datasFabricacaoValidadeSaoValidas(LocalDate dataFabricacao, LocalDate dataValidade) {

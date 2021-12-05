@@ -21,6 +21,6 @@ class FornecedorTest {
 
         fornecedor.desabilitar();
 
-        assertEquals(Situacao.DESATIVADO, fornecedor.getSituacao());
+        assertEquals(Situacao.INATIVO, fornecedor.getSituacao());
     }
 }
