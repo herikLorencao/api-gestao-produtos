@@ -1,8 +1,5 @@
-package br.com.api.domain;
+package br.com.api.domain.fornecedor;
 
-import br.com.api.domain.fornecedor.CNPJ;
-import br.com.api.domain.fornecedor.CNPJInvalido;
-import br.com.api.domain.fornecedor.ValidadorCNPJ;
 import br.com.api.infra.validation.ValidadorCNPJStella;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
