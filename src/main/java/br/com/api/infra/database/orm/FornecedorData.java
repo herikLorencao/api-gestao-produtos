@@ -1,6 +1,7 @@
 package br.com.api.infra.database.orm;
 
 import br.com.api.domain.Situacao;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,8 +13,8 @@ import java.util.Objects;
 public class FornecedorData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "codigo", nullable = false)
+    private Long codigo;
 
     @Column(name = "descricao")
     private String descricao;
@@ -25,26 +26,26 @@ public class FornecedorData {
     @Column(name = "situacao")
     private Situacao situacao;
 
-    @OneToMany(mappedBy = "fornecedor", orphanRemoval = true)
+    @OneToMany(mappedBy = "fornecedor", orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ProdutoData> produtos = new ArrayList<>();
 
     public FornecedorData() {
     }
 
     public FornecedorData(Long id, String descricao, String cpnj, Situacao situacao, List<ProdutoData> produtos) {
-        this.id = id;
+        this.codigo = id;
         this.descricao = descricao;
         this.cpnj = cpnj;
         this.situacao = situacao;
         this.produtos = produtos;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCodigo() {
+        return codigo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCodigo(Long id) {
+        this.codigo = id;
     }
 
     public String getDescricao() {
@@ -86,7 +87,7 @@ public class FornecedorData {
         if (o == null || getClass() != o.getClass())
             return false;
         FornecedorData that = (FornecedorData) o;
-        return Objects.equals(id, that.id)
+        return Objects.equals(codigo, that.codigo)
                 && Objects.equals(descricao, that.descricao)
                 && Objects.equals(cpnj, that.cpnj)
                 && situacao == that.situacao
@@ -95,6 +96,6 @@ public class FornecedorData {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descricao, cpnj, situacao, produtos);
+        return Objects.hash(codigo, descricao, cpnj, situacao, produtos);
     }
 }

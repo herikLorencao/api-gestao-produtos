@@ -6,11 +6,14 @@ import br.com.api.domain.produto.Produto;
 import java.util.List;
 
 public class Fornecedor {
-    private final Long codigo;
-    private final String descricao;
-    private final CNPJ cnpj;
-    private final List<Produto> produtos;
+    private Long codigo;
+    private String descricao;
+    private CNPJ cnpj;
+    private List<Produto> produtos;
     private Situacao situacao;
+
+    public Fornecedor() {
+    }
 
     public Fornecedor(Long codigo, String descricao, CNPJ cnpj, List<Produto> produtos, Situacao situacao) {
         this.codigo = codigo;

@@ -13,6 +13,9 @@ public class Produto {
     private Fornecedor fornecedor;
     private Situacao situacao;
 
+    public Produto() {
+    }
+
     public Produto(Long codigo, String descricao, LocalDate dataFabricacao, LocalDate dataValidade,
                    Fornecedor fornecedor, Situacao situacao) {
         if (!datasFabricacaoValidadeSaoValidas(dataFabricacao, dataValidade))

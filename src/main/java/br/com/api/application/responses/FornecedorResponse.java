@@ -5,27 +5,24 @@ public class FornecedorResponse {
     private String descricao;
     private String cnpj;
 
-    public Long getCodigo() {
-        return codigo;
+    public FornecedorResponse() {
     }
 
-    public void setCodigo(Long codigo) {
+    public FornecedorResponse(Long codigo, String descricao, String cnpj) {
         this.codigo = codigo;
+        this.descricao = descricao;
+        this.cnpj = cnpj;
+    }
+
+    public Long getCodigo() {
+        return codigo;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public String getCnpj() {
         return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
     }
 }

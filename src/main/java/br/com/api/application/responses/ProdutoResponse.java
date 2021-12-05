@@ -12,51 +12,39 @@ public class ProdutoResponse {
     private Long codigoFornecedor;
     private Situacao situacao;
 
-    public Long getCodigo() {
-        return codigo;
+    public ProdutoResponse() {
     }
 
-    public void setCodigo(Long codigo) {
+    public ProdutoResponse(Long codigo, String descricao, LocalDate dataFabricacao, LocalDate dataValidade, Long codigoFornecedor, Situacao situacao) {
         this.codigo = codigo;
+        this.descricao = descricao;
+        this.dataFabricacao = dataFabricacao;
+        this.dataValidade = dataValidade;
+        this.codigoFornecedor = codigoFornecedor;
+        this.situacao = situacao;
+    }
+
+    public Long getCodigo() {
+        return codigo;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public LocalDate getDataFabricacao() {
         return dataFabricacao;
-    }
-
-    public void setDataFabricacao(LocalDate dataFabricacao) {
-        this.dataFabricacao = dataFabricacao;
     }
 
     public LocalDate getDataValidade() {
         return dataValidade;
     }
 
-    public void setDataValidade(LocalDate dataValidade) {
-        this.dataValidade = dataValidade;
-    }
-
     public Long getCodigoFornecedor() {
         return codigoFornecedor;
     }
 
-    public void setCodigoFornecedor(Long codigoFornecedor) {
-        this.codigoFornecedor = codigoFornecedor;
-    }
-
     public Situacao getSituacao() {
         return situacao;
-    }
-
-    public void setSituacao(Situacao situacao) {
-        this.situacao = situacao;
     }
 }

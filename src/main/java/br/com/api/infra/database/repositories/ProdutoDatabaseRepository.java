@@ -1,8 +1,10 @@
 package br.com.api.infra.database.repositories;
 
 import br.com.api.domain.Situacao;
+import br.com.api.domain.fornecedor.Fornecedor;
 import br.com.api.domain.produto.Produto;
 import br.com.api.domain.produto.ProdutoRepository;
+import br.com.api.infra.database.jpa.FornecedorDataRepository;
 import br.com.api.infra.database.jpa.ProdutoDataRepository;
 import br.com.api.infra.database.orm.ProdutoData;
 import org.hibernate.ObjectNotFoundException;
@@ -14,11 +16,13 @@ import org.springframework.data.domain.Pageable;
 
 public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto>, Pageable> {
     private final ProdutoDataRepository repository;
+    private final FornecedorDataRepository fornecedorRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ProdutoDatabaseRepository(ProdutoDataRepository repository, ModelMapper modelMapper) {
+    public ProdutoDatabaseRepository(ProdutoDataRepository repository, FornecedorDataRepository fornecedorRepository, ModelMapper modelMapper) {
         this.repository = repository;
+        this.fornecedorRepository = fornecedorRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -60,6 +64,12 @@ public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto
 
     private Produto persistirProduto(Produto produto) {
         var produtoData = modelMapper.map(produto, ProdutoData.class);
+        var codigoFornecedor = produtoData.getFornecedor().getCodigo();
+        var fornecedorData = fornecedorRepository
+                .findById(codigoFornecedor)
+                .orElseThrow(() -> new ObjectNotFoundException(codigoFornecedor, Fornecedor.class.getSimpleName()));
+
+        produtoData.setFornecedor(fornecedorData);
         produtoData = repository.save(produtoData);
         return modelMapper.map(produtoData, Produto.class);
     }

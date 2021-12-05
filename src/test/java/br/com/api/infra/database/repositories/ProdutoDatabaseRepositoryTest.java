@@ -1,6 +1,7 @@
 package br.com.api.infra.database.repositories;
 
 import br.com.api.infra.database.factories.ProdutoDataFactory;
+import br.com.api.infra.database.jpa.FornecedorDataRepository;
 import br.com.api.infra.database.jpa.ProdutoDataRepository;
 import br.com.api.infra.database.orm.ProdutoData;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
@@ -19,6 +19,9 @@ class ProdutoDatabaseRepositoryTest {
     @Mock
     private ProdutoDataRepository produtoDataRepository;
 
+    @Mock
+    private FornecedorDataRepository fornecedorRepository;
+
     private ModelMapper modelMapper;
     private ProdutoDataFactory produtoDataFactory;
     private ProdutoDatabaseRepository repository;
@@ -28,7 +31,7 @@ class ProdutoDatabaseRepositoryTest {
         modelMapper = new ModelMapper();
         MockitoAnnotations.openMocks(this);
         produtoDataFactory = new ProdutoDataFactory();
-        repository = new ProdutoDatabaseRepository(produtoDataRepository, modelMapper);
+        repository = new ProdutoDatabaseRepository(produtoDataRepository, fornecedorRepository, modelMapper);
     }
 
     @Test

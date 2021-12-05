@@ -13,6 +13,9 @@ public class ProdutoRequest {
     private Long codigoFornecedor;
     private Situacao situacao;
 
+    public ProdutoRequest() {
+    }
+
     public String getDescricao() {
         return descricao;
     }
