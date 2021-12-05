@@ -10,7 +10,7 @@ services:
       - db-volume:/var/lib/postgresql/data
 
   api:
-    image: caelum/clines-api
+    image: herik-lorencao/gestao-produtos
     environment:
       DB_HOST: database
     ports:
