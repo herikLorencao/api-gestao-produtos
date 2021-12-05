@@ -1,7 +1,6 @@
 package br.com.api.infra.database.orm;
 
 import br.com.api.domain.Situacao;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,8 +18,8 @@ public class FornecedorData {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "cpnj")
-    private String cpnj;
+    @Column(name = "cnpj")
+    private String cnpj;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "situacao")
@@ -32,10 +31,10 @@ public class FornecedorData {
     public FornecedorData() {
     }
 
-    public FornecedorData(Long id, String descricao, String cpnj, Situacao situacao, List<ProdutoData> produtos) {
-        this.codigo = id;
+    public FornecedorData(Long codigo, String descricao, String cpnj, Situacao situacao, List<ProdutoData> produtos) {
+        this.codigo = codigo;
         this.descricao = descricao;
-        this.cpnj = cpnj;
+        this.cnpj = cpnj;
         this.situacao = situacao;
         this.produtos = produtos;
     }
@@ -44,8 +43,8 @@ public class FornecedorData {
         return codigo;
     }
 
-    public void setCodigo(Long id) {
-        this.codigo = id;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescricao() {
@@ -56,12 +55,12 @@ public class FornecedorData {
         this.descricao = descricao;
     }
 
-    public String getCpnj() {
-        return cpnj;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setCpnj(String cpnj) {
-        this.cpnj = cpnj;
+    public void setCnpj(String cpnj) {
+        this.cnpj = cpnj;
     }
 
     public Situacao getSituacao() {
@@ -89,13 +88,13 @@ public class FornecedorData {
         FornecedorData that = (FornecedorData) o;
         return Objects.equals(codigo, that.codigo)
                 && Objects.equals(descricao, that.descricao)
-                && Objects.equals(cpnj, that.cpnj)
+                && Objects.equals(cnpj, that.cnpj)
                 && situacao == that.situacao
                 && Objects.equals(produtos, that.produtos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo, descricao, cpnj, situacao, produtos);
+        return Objects.hash(codigo, descricao, cnpj, situacao, produtos);
     }
 }

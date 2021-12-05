@@ -8,14 +8,14 @@ import java.util.List;
 public class Fornecedor {
     private Long codigo;
     private String descricao;
-    private CNPJ cnpj;
+    private String cnpj;
     private List<Produto> produtos;
     private Situacao situacao;
 
     public Fornecedor() {
     }
 
-    public Fornecedor(Long codigo, String descricao, CNPJ cnpj, List<Produto> produtos, Situacao situacao) {
+    public Fornecedor(Long codigo, String descricao, String cnpj, List<Produto> produtos, Situacao situacao) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.cnpj = cnpj;
@@ -35,7 +35,7 @@ public class Fornecedor {
         return descricao;
     }
 
-    public CNPJ getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
