@@ -1,5 +1,6 @@
 package br.com.api.infra.configuration;
 
+import br.com.api.application.rest.ProdutoController;
 import br.com.api.application.services.FornecedorRestService;
 import br.com.api.application.services.ProdutoRestService;
 import br.com.api.domain.fornecedor.Fornecedor;
@@ -21,14 +22,14 @@ import org.springframework.data.domain.Pageable;
 @Configuration
 public class BeanConfiguration {
     @Bean
-    public ProdutoRepository<Page<Produto>, Pageable>  produtoRepository(
+    public ProdutoRepository<Page<Produto>, Pageable> produtoRepository(
             ProdutoDataRepository repository, ModelMapper modelMapper
     ) {
         return new ProdutoDatabaseRepository(repository, modelMapper);
     }
 
     @Bean
-    public ProdutoService produtoService(ProdutoRepository<Page<Produto>, Pageable> repository) {
+    public ProdutoService<Page<Produto>, Pageable> produtoService(ProdutoRepository<Page<Produto>, Pageable> repository) {
         return new ProdutoRestService(repository);
     }
 

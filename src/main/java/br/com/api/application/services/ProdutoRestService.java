@@ -6,9 +6,7 @@ import br.com.api.domain.produto.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
-@Service
 public class ProdutoRestService implements ProdutoService<Page<Produto>, Pageable> {
     private final ProdutoRepository<Page<Produto>, Pageable> repository;
 
@@ -23,7 +21,7 @@ public class ProdutoRestService implements ProdutoService<Page<Produto>, Pageabl
     }
 
     @Override
-    public Page<Produto> listarAtivos(Pageable dadosPaginacao) {
+    public Page<Produto> listar(Pageable dadosPaginacao) {
         return repository.listar(dadosPaginacao);
     }
 

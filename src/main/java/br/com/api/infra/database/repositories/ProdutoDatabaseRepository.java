@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 
-@Component
 public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto>, Pageable> {
     private final ProdutoDataRepository repository;
     private final ModelMapper modelMapper;
