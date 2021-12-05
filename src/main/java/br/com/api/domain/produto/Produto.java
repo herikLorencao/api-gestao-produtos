@@ -6,11 +6,11 @@ import br.com.api.domain.fornecedor.Fornecedor;
 import java.time.LocalDate;
 
 public class Produto {
-    private final Long codigo;
-    private final String descricao;
-    private final LocalDate dataFabricacao;
-    private final LocalDate dataValidade;
-    private final Fornecedor fornecedor;
+    private Long codigo;
+    private String descricao;
+    private LocalDate dataFabricacao;
+    private LocalDate dataValidade;
+    private Fornecedor fornecedor;
     private Situacao situacao;
 
     public Produto(Long codigo, String descricao, LocalDate dataFabricacao, LocalDate dataValidade,

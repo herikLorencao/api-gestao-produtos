@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CNPJTest {
+    private final static String CNPJ_VALIDO = "26.637.142/0001-58";
+    private final static String CNPJ_INVALIDO = "261.637.142/0001-58";
     private ValidadorCNPJ validador;
 
     @BeforeEach
@@ -17,11 +19,11 @@ class CNPJTest {
 
     @Test
     void deveriaCriarCNPJ() {
-        assertAll(() -> new CNPJ(validador, "26.637.142/0001-58"));
+        assertAll(() -> new CNPJ(validador, CNPJ_VALIDO));
     }
 
     @Test
     void deveriaLancarCNPJInvalido() {
-        assertThrows(CNPJInvalido.class, () -> new CNPJ(validador, "03.778.13/0001-48"));
+        assertThrows(CNPJInvalido.class, () -> new CNPJ(validador, CNPJ_INVALIDO));
     }
 }

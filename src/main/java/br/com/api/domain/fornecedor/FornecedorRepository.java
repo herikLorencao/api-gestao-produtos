@@ -5,9 +5,9 @@ public interface FornecedorRepository<T, V> {
 
     T listar(V dadosPaginacao);
 
-    Fornecedor cadastrar(Fornecedor supplier);
+    Fornecedor cadastrar(Fornecedor fornecedor);
 
-    Fornecedor alterar(Fornecedor supplier);
+    Fornecedor alterar(Fornecedor fornecedor);
 
     void remover(Long id);
 }
