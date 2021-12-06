@@ -35,11 +35,11 @@ public class FornecedorDatabaseRepository implements FornecedorRepository<Page<F
     }
 
     @Override
-    public Page<Fornecedor> listar(Pageable dadosPaginacao) {
-        var paginaFornecedorData = repository.findAllBySituacao(Situacao.ATIVO, dadosPaginacao);
+    public Page<Fornecedor> listar(Pageable parametros) {
+        var paginaFornecedorData = repository.findAllBySituacao(Situacao.ATIVO, parametros);
         var fornecedores = paginaFornecedorData.getContent()
                 .stream().map(fornecedorData -> modelMapper.map(fornecedorData, Fornecedor.class)).toList();
-        return new PageImpl<>(fornecedores, dadosPaginacao, paginaFornecedorData.getTotalElements());
+        return new PageImpl<>(fornecedores, parametros, paginaFornecedorData.getTotalElements());
     }
 
     @Override

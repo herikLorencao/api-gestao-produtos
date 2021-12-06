@@ -3,7 +3,7 @@ package br.com.api.domain.produto;
 public interface ProdutoService<T, V> {
     Produto buscar(Long codigo);
 
-    T listar(V dadosPaginacao);
+    T listar(V parametros);
 
     Produto cadastrar(Produto produto);
 

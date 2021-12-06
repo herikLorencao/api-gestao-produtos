@@ -21,8 +21,8 @@ public class FornecedorRestService implements FornecedorService<Page<Fornecedor>
     }
 
     @Override
-    public Page<Fornecedor> listar(Pageable dadosPaginacao) {
-        return repository.listar(dadosPaginacao);
+    public Page<Fornecedor> listar(Pageable parametros) {
+        return repository.listar(parametros);
     }
 
     @Override
