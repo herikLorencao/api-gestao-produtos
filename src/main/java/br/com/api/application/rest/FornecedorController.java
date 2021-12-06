@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -35,7 +36,7 @@ public class FornecedorController {
     }
 
     @GetMapping
-    public Page<FornecedorResponse> listar(Pageable pageInfo) {
+    public Page<FornecedorResponse> listar(@PageableDefault Pageable pageInfo) {
         var paginaFornecedores = service.listar(pageInfo);
         var responses = paginaFornecedores.getContent().stream()
                 .map(fornecedor -> modelMapper.map(fornecedor, FornecedorResponse.class)).toList();
@@ -58,6 +59,7 @@ public class FornecedorController {
             @PathVariable Long id,
             @Valid @RequestBody FornecedorRequest fornecedorRequest
     ) {
+        fornecedorRequest.setId(id);
         var fornecedor = modelMapper.map(fornecedorRequest, Fornecedor.class);
         fornecedor = service.alterar(fornecedor);
         var response = modelMapper.map(fornecedor, FornecedorResponse.class);
@@ -66,6 +68,7 @@ public class FornecedorController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<FornecedorResponse> remover(@PathVariable Long id) {
+        service.remover(id);
         return ResponseEntity.noContent().build();
     }
 }

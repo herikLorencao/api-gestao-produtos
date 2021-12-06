@@ -39,7 +39,7 @@ public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto
 
     @Override
     public Page<Produto> listar(Pageable dadosPaginacao) {
-        var paginaProdutoData = repository.findAll(dadosPaginacao);
+        var paginaProdutoData = repository.findAllBySituacao(Situacao.ATIVO, dadosPaginacao);
         var produtos = paginaProdutoData.getContent()
                 .stream().map(produtoData -> modelMapper.map(produtoData, Produto.class)).toList();
         return new PageImpl<>(produtos, dadosPaginacao, paginaProdutoData.getTotalElements());

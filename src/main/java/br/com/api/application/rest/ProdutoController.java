@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -35,7 +36,7 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public Page<ProdutoResponse> listar(Pageable pageInfo) {
+    public Page<ProdutoResponse> listar(@PageableDefault Pageable pageInfo) {
         var paginaProdutos = service.listar(pageInfo);
         var responses = paginaProdutos.getContent().stream()
                 .map(produto -> modelMapper.map(produto, ProdutoResponse.class)).toList();
@@ -58,6 +59,7 @@ public class ProdutoController {
             @PathVariable Long id,
             @Valid @RequestBody ProdutoRequest produtoRequest
     ) {
+        produtoRequest.setId(id);
         var produto = modelMapper.map(produtoRequest, Produto.class);
         produto = service.alterar(produto);
         var response = modelMapper.map(produto, ProdutoResponse.class);
@@ -66,6 +68,7 @@ public class ProdutoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ProdutoResponse> remover(@PathVariable Long id) {
+        service.remover(id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -6,14 +6,23 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class ProdutoRequest {
+    private Long id;
     @NotNull
     private String descricao;
     private LocalDate dataFabricacao;
     private LocalDate dataValidade;
     private Long codigoFornecedor;
-    private Situacao situacao;
+    private final Situacao situacao = Situacao.ATIVO;
 
     public ProdutoRequest() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescricao() {
