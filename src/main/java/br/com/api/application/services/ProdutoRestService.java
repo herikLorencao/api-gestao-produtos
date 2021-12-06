@@ -27,6 +27,7 @@ public class ProdutoRestService implements ProdutoService<Page<Produto>, Pageabl
 
     @Override
     public Produto cadastrar(Produto produto) {
+        produto.verificarValidadeDatas();
         return repository.cadastrar(produto);
     }
 

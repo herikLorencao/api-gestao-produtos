@@ -18,9 +18,7 @@ public class Produto {
 
     public Produto(Long codigo, String descricao, LocalDate dataFabricacao, LocalDate dataValidade,
                    Fornecedor fornecedor, Situacao situacao) {
-        if (!datasFabricacaoValidadeSaoValidas(dataFabricacao, dataValidade))
-            throw new DatasInvalidas(this);
-
+        verificarValidadeDatas();
         this.codigo = codigo;
         this.descricao = descricao;
         this.dataFabricacao = dataFabricacao;
@@ -31,6 +29,11 @@ public class Produto {
 
     public void desativar() {
         situacao = Situacao.INATIVO;
+    }
+
+    public void verificarValidadeDatas() {
+        if (!datasFabricacaoValidadeSaoValidas(dataFabricacao, dataValidade))
+            throw new DatasInvalidas(this);
     }
 
     private boolean datasFabricacaoValidadeSaoValidas(LocalDate dataFabricacao, LocalDate dataValidade) {
