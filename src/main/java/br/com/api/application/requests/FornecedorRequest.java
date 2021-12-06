@@ -1,10 +1,12 @@
 package br.com.api.application.requests;
 
 import br.com.api.domain.Situacao;
+import br.com.caelum.stella.bean.validation.CNPJ;
 
 public class FornecedorRequest {
     private Long codigo;
     private String descricao;
+    @CNPJ(formatted = true, message = "CNPJ inválido")
     private String cnpj;
     private final Situacao situacao = Situacao.ATIVO;
 
