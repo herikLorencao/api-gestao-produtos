@@ -25,7 +25,7 @@ public class FornecedorData {
     @Column(name = "situacao")
     private Situacao situacao;
 
-    @OneToMany(mappedBy = "fornecedor", orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
     private List<ProdutoData> produtos = new ArrayList<>();
 
     public FornecedorData() {

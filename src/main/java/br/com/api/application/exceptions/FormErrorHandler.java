@@ -1,6 +1,7 @@
 package br.com.api.application.exceptions;
 
 import br.com.api.application.responses.FormErrorResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -24,8 +25,15 @@ public class FormErrorHandler {
         var fieldErrors = exception.getBindingResult().getFieldErrors();
 
         fieldErrors.forEach(e -> {
-            var message = messageSource.getMessage(e, LocaleContextHolder.getLocale());
-            var formError = new FormErrorResponse(e.getField(), message);
+            FormErrorResponse formError = null;
+
+            if (messageSource != null) {
+                var message = messageSource.getMessage(e, LocaleContextHolder.getLocale());
+                formError = new FormErrorResponse(e.getField(), message);
+            } else {
+                formError = new FormErrorResponse(e.getField(), "Valor inválido");
+            }
+
             dtos.add(formError);
         });
 
