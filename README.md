@@ -26,6 +26,8 @@ http://localhost:10000
 ```
 
 ### Requisitos
+
+- Java
 - Make
 - Docker
 
