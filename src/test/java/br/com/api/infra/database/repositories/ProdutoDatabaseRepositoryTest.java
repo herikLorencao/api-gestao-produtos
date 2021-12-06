@@ -40,6 +40,7 @@ class ProdutoDatabaseRepositoryTest {
         when(produtoDataRepository.findById(1L)).thenReturn(Optional.of(produtoData));
 
         var produto = repository.buscar(1L);
-        assertEquals(produtoData, modelMapper.map(produto, ProdutoData.class));
+
+        assertEquals(produtoData.getCodigo(), produto.getCodigo());
     }
 }

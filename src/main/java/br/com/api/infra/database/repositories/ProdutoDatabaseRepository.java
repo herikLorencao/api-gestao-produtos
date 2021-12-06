@@ -2,6 +2,7 @@ package br.com.api.infra.database.repositories;
 
 import br.com.api.domain.Situacao;
 import br.com.api.domain.fornecedor.Fornecedor;
+import br.com.api.domain.fornecedor.FornecedorInativo;
 import br.com.api.domain.produto.Produto;
 import br.com.api.domain.produto.ProdutoRepository;
 import br.com.api.infra.database.jpa.FornecedorDataRepository;
@@ -68,6 +69,9 @@ public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto
         var fornecedorData = fornecedorRepository
                 .findById(codigoFornecedor)
                 .orElseThrow(() -> new ObjectNotFoundException(codigoFornecedor, Fornecedor.class.getSimpleName()));
+
+        if (fornecedorData.getSituacao().equals(Situacao.INATIVO))
+            throw new FornecedorInativo(codigoFornecedor);
 
         produtoData.setFornecedor(fornecedorData);
         produtoData = repository.save(produtoData);
