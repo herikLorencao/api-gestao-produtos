@@ -40,5 +40,5 @@ $ make run
 ### Finalizar Projeto
 
 ```shell
-make stop
+$ make stop
 ```
