@@ -1,3 +1,11 @@
+CREATE TABLE IF NOT EXISTS fornecedores
+(
+    codigo    SERIAL PRIMARY KEY ,
+    cnpj      CHAR(18) CONSTRAINT cnpj_unique UNIQUE,
+    descricao VARCHAR(255),
+    situacao  VARCHAR(7)
+);
+
 INSERT INTO fornecedores(cnpj, descricao, situacao) VALUES ('12.528.708/0001-07', 'Fornecedor 1', 'ATIVO');
 INSERT INTO fornecedores(cnpj, descricao, situacao) VALUES ('04.128.563/0001-10', 'Fornecedor 2', 'ATIVO');
 INSERT INTO fornecedores(cnpj, descricao, situacao) VALUES ('10.338.320/0001-00', 'Fornecedor 3', 'ATIVO');

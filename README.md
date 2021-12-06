@@ -16,3 +16,27 @@
 - Código do fornecedor
 - Descrição do fornecedor
 - CNPJ do fornecedor
+
+## Rodando Projeto
+
+Por padrão o projeto roda no endereço:
+
+```
+http://localhost:10000
+```
+
+### Requisitos
+- Make
+- Docker
+
+### Iniciar projeto
+
+```shell
+$ make run
+```
+
+### Finalizar Projeto
+
+```shell
+make stop
+```

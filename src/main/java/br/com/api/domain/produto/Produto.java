@@ -18,13 +18,13 @@ public class Produto {
 
     public Produto(Long codigo, String descricao, LocalDate dataFabricacao, LocalDate dataValidade,
                    Fornecedor fornecedor, Situacao situacao) {
-        verificarValidadeDatas();
         this.codigo = codigo;
         this.descricao = descricao;
         this.dataFabricacao = dataFabricacao;
         this.dataValidade = dataValidade;
         this.fornecedor = fornecedor;
         this.situacao = situacao;
+        verificarValidadeDatas();
     }
 
     public void desativar() {
@@ -32,6 +32,9 @@ public class Produto {
     }
 
     public void verificarValidadeDatas() {
+        if (dataFabricacao == null || dataValidade == null)
+            return;
+
         if (!datasFabricacaoValidadeSaoValidas(dataFabricacao, dataValidade))
             throw new DatasInvalidas(this);
     }

@@ -4,6 +4,6 @@ WORKDIR /gestaoprodutos
 
 COPY target/*.jar /gestaoprodutos/produtos.jar
 
-EXPOSE 8080
+EXPOSE 10000
 
 CMD java -XX:+UseContainerSupport -jar produtos.jar

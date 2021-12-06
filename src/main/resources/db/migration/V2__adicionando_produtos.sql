@@ -1,3 +1,13 @@
+CREATE TABLE IF NOT EXISTS produtos
+(
+    codigo            SERIAL PRIMARY KEY,
+    data_fabricacao   DATE,
+    data_validade     DATE,
+    descricao         VARCHAR(255) NOT NULL,
+    situacao          VARCHAR(7),
+    fornecedor_codigo BIGINT CONSTRAINT fk_fornecedor REFERENCES fornecedores
+);
+
 INSERT INTO produtos(data_fabricacao, data_validade, descricao, situacao, fornecedor_codigo) VALUES('2021-12-08', '2029-12-08', 'Produto 1', 'ATIVO', 1);
 INSERT INTO produtos(data_fabricacao, data_validade, descricao, situacao, fornecedor_codigo) VALUES('2021-12-08', '2029-12-08', 'Produto 2', 'ATIVO', 2);
 INSERT INTO produtos(data_fabricacao, data_validade, descricao, situacao, fornecedor_codigo) VALUES('2021-12-08', '2029-12-08', 'Produto 3', 'ATIVO', 3);

@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/gestao_produtos
+    username: api
+    password: 3opijdf2@!ad
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 10000
