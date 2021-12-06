@@ -18,7 +18,7 @@ public class FornecedorData {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "cnpj")
+    @Column(name = "cnpj", unique = true)
     private String cnpj;
 
     @Enumerated(EnumType.STRING)

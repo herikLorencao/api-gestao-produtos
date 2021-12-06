@@ -59,7 +59,7 @@ public class FornecedorController {
             @PathVariable Long id,
             @Valid @RequestBody FornecedorRequest fornecedorRequest
     ) {
-        fornecedorRequest.setId(id);
+        fornecedorRequest.setCodigo(id);
         var fornecedor = modelMapper.map(fornecedorRequest, Fornecedor.class);
         fornecedor = service.alterar(fornecedor);
         var response = modelMapper.map(fornecedor, FornecedorResponse.class);

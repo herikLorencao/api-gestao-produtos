@@ -3,7 +3,7 @@ package br.com.api.application.requests;
 import br.com.api.domain.Situacao;
 
 public class FornecedorRequest {
-    private Long id;
+    private Long codigo;
     private String descricao;
     private String cnpj;
     private final Situacao situacao = Situacao.ATIVO;
@@ -11,12 +11,12 @@ public class FornecedorRequest {
     public FornecedorRequest() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCodigo() {
+        return codigo;
     }
 
     public String getDescricao() {

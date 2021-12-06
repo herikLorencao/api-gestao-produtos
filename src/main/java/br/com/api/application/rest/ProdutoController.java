@@ -59,7 +59,7 @@ public class ProdutoController {
             @PathVariable Long id,
             @Valid @RequestBody ProdutoRequest produtoRequest
     ) {
-        produtoRequest.setId(id);
+        produtoRequest.setCodigo(id);
         var produto = modelMapper.map(produtoRequest, Produto.class);
         produto = service.alterar(produto);
         var response = modelMapper.map(produto, ProdutoResponse.class);
