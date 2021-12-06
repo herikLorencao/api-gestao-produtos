@@ -42,3 +42,7 @@ $ make run
 ```shell
 $ make stop
 ```
+
+### Endpoints
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6420672-0c7f8347-351f-4696-8ea8-5ced81962e55?action=collection%2Ffork&collection-url=entityId%3D6420672-0c7f8347-351f-4696-8ea8-5ced81962e55%26entityType%3Dcollection%26workspaceId%3Dd42a8f07-e7ef-4d3f-9e11-92ca5a506bbf#?env%5BAmbiente%5D=W3sia2V5IjoiZGV2VXJsIiwidmFsdWUiOiJsb2NhbGhvc3Q6MTAwMDAiLCJlbmFibGVkIjp0cnVlfV0=)
