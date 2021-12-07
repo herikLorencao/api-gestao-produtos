@@ -33,6 +33,7 @@ public class ProdutoRestService implements ProdutoService<Page<Produto>, Pageabl
 
     @Override
     public Produto alterar(Produto produto) {
+        produto.verificarValidadeDatas();
         return repository.alterar(produto);
     }
 
