@@ -102,7 +102,8 @@ class ProdutoDatabaseRepositoryTest {
         var produtoData = modelMapper.map(produto, ProdutoData.class);
         var fornecedorData = fornecedorDataFactory.geraValido();
 
-        when(fornecedorDataRepository.findById(produtoData.getCodigo())).thenReturn(Optional.of(fornecedorData));
+        when(fornecedorDataRepository.findById(produtoData.getFornecedor().getCodigo())).thenReturn(Optional.of(fornecedorData));
+        when(produtoDataRepository.findById(produtoData.getCodigo())).thenReturn(Optional.of(produtoData));
         when(produtoDataRepository.save(argThat(p -> p.getCodigo().equals(produto.getCodigo())))).thenReturn(produtoData);
 
         repository.alterar(produto);

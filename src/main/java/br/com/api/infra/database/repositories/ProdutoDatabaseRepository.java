@@ -53,6 +53,7 @@ public class ProdutoDatabaseRepository implements ProdutoRepository<Page<Produto
 
     @Override
     public Produto alterar(Produto produto) {
+        buscar(produto.getCodigo());
         return persistirProduto(produto);
     }
 

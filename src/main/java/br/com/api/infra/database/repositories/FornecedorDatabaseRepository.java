@@ -49,6 +49,7 @@ public class FornecedorDatabaseRepository implements FornecedorRepository<Page<F
 
     @Override
     public Fornecedor alterar(Fornecedor fornecedor) {
+        buscar(fornecedor.getCodigo());
         return persistirFornecedor(fornecedor);
     }
 
